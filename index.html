@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="shortcut icon" href="./favicon.ico"/>
+    <title>Simply Home Page</title>
+    <link href="./css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <div class="menu" @click="menu=!menu" :class="{on:menu}">
+            <i></i>
+        </div>
+        <div class="list" :class="{closed:!menu}">
+            <ul>
+                <div v-for="(item, title) in list">
+                    <li class="title" v-text="title"></li>
+                    <li v-for="item in item">
+                        <a rel="nofollow" :href="item.url" target="_blank">
+                            <span v-text="item.name"></span>
+                        </a>
+                    </li>
+                </div>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="con">
+                <div class="logo"></div>
+                <div class="search_box">
+                    <form :action="s_list[s_now].action" method="get">
+                        <button type="button" @click="s_choose = !s_choose" class="s_choose_open">
+                            <img :src="s_list[s_now].icon" width="30" height="30" ondragstart="return false"/>
+                        </button>
+                        <transition name="slide-fade">
+                            <div class="s_list" v-show="s_choose" @click="s_choose = false">
+                                <button type="button" v-for="(item, title) in s_list" @click="s_now = title" v-show="title !== s_now">
+                                    <img :src="item.icon" width="30" height="30" ondragstart="return false"/>
+                                </button>
+                            </div>
+                        </transition>
+                        <input class="wd" type="text" ref="input" :placeholder="'在【'+s_list[s_now].name+'】上搜索'" :name="s_list[s_now].s_name" autocomplete="off" v-model="s_text" @keyup="get_sug(s_text)">
+                    </form>
+                    <transition name="fade">
+                        <div class="sug" v-show="s_sug && s_text">
+                            <div v-for="(value, index) in s_sug" v-if="index < 4" v-text="value" @click="s_text = value; s_sug = false"></div>
+                        </div>
+                    </transition>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            © 2019 Home Page
+        </div>
+    </div>
+    <script src="./js/vue.min.js"></script>
+    <script src="./js/config.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+</html>

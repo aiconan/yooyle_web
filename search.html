@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="shortcut icon" href="./favicon.ico"/>
+    <title>Yooyle</title>
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/search_loading.css" rel="stylesheet">
+    <link href="./css/search.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <div class="container center">
+            <div class="logo center"></div>
+            <form action="#" method="get" class="valign">
+                <input type="text" name="query" placeholder="搜索很简单，回车即可" autocomplete="off" :class="{sug_show_input:sug}" v-model="text" @change="get_sug(text)"/>
+                <button type="submit" :class="{sug_show_button:sug}">
+                </button>
+            </form>
+            <transition name="fade">
+                <div class="sug" v-if="sug">
+                    <div v-for="(t, i) in sug" v-text="t" v-if="i < 6" @click="text = t; sug = false"></div>
+                </div>
+            </transition>
+            <div class="results"></div>
+            <div class="loading_page" v-if="loading">
+                <div class="loading_box">
+                    <div class="loader">
+                        <div class="box">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="box">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="box">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="box">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="box">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="box">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                    <p>正在加载</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/vue@2.6.10.min.js"></script>
+    <script src="./js/iscroll@5.2.0.min.js"></script>
+    <script src="./js/search.js"></script>
+</body>
+</html>

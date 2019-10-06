@@ -1,0 +1,116 @@
+* {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    color: #777777;
+    overflow: hidden;
+    background: #FFFFFF;
+    font-weight: 300;
+    font-family: 'Noto Sans SC Sliced', PingFangSC-Light, Microsoft YaHei UI, Microsoft YaHei, helvetica, sans-serif;
+}
+.iScrollVerticalScrollbar {
+    width: 6px!important;
+    right: 0px!important;
+}
+.iScrollIndicator {
+    background: rgba(0, 0, 0, 0.2)!important;
+}
+#app {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.container {
+    width: 96%;
+    max-width: 736px;
+    touch-action: none;
+}
+.logo {
+    position: relative;
+    width: 100px;
+    height: 40px;
+    margin: 14px 0 4px 0;
+    background: url(../icon/logo.png) no-repeat center/cover;
+}
+form, input, button {
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+    background: none;
+}
+form {
+    width: 100%;
+    height: 39px;
+    margin: 10px 0;
+}
+input {
+    width: 100%;
+    height: 100%;
+    font-size: 15px;
+    transition: 0.1s all linear;
+    border-radius: 8px;
+    box-shadow: 0 0 6px #ccc;
+    padding-left: 18px;
+    padding-right: 57px;
+}
+input:hover {
+    cursor: pointer;
+}
+input:focus {
+    cursor: text;
+}
+form button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 39px;
+    transition: 0.1s all linear;
+    border-radius: 0px 8px 8px 0px;
+    background-color: rgb(33, 150, 243);
+    background-image: url('data:image/svg+xml,\00003csvg height="39px" width="39px" xmlns="http://www.w3.org/2000/svg">\00003cg fill="none" stroke="%23fff">\00003cellipse cx="16.5" cy="16" rx="5.4" ry="5.4" stroke-width="2px">\00003c/ellipse>\00003cpath d="M22 21.3l4.3 4.3" stroke-linecap="round" stroke-width="2px">\00003c/path>\00003c/g>\00003c/svg>');
+}
+form button:hover {
+    cursor: pointer;
+}
+.sug_show_input {
+    border-radius: 8px 8px 0px 0px;
+}
+.sug_show_button {
+    border-radius: 0px 8px 0px 0px;
+}
+.sug {
+    background-color: #FFFFFF;
+    width: 100%;
+    box-shadow: 0px 3px 6px #ccc;
+    position: absolute;
+    top: 90px;
+    border-radius: 0px 0px 8px 8px;
+}
+.sug div {
+    font-size: 14px;
+    transition: 0.1s all linear;
+    padding: 8px 18px;
+    cursor: pointer;
+}
+.sug div:last-child {
+    border-radius: 0px 0px 8px 8px;
+}
+.sug div:hover {
+    background: rgb(33, 150, 243);
+    color: #fff;
+}
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .3s;
+}
+.fade-enter, .fade-leave-to{
+    opacity: 0;
+}

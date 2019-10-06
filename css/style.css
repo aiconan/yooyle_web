@@ -1,0 +1,10 @@
+.center {
+    display: block!important;
+    margin-right: auto!important;
+    margin-left: auto!important;
+}
+.valign {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
