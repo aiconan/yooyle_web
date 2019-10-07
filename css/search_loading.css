@@ -18,6 +18,7 @@
     margin: 16px auto;
     font-size: 18px;
     text-align: center;
+    display: none;
 }
 @keyframes opacity-keyframe {
     0%,74.72706% {
