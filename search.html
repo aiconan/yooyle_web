@@ -14,13 +14,13 @@
         <div class="container center">
             <div class="logo center"></div>
             <form action="#" method="get" class="valign">
-                <input type="text" name="query" placeholder="搜索很简单，回车即可" autocomplete="off" :class="{sug_show_input:sug}" v-model="text" @change="get_sug(text)"/>
-                <button type="submit" :class="{sug_show_button:sug}">
+                <input type="text" name="query" placeholder="搜索很简单，回车即可" autocomplete="off" :class="{sug_show_input:sug}" v-model="text" @keyup="get_sug(text)"/>
+                <button type="submit" :class="{sug_show_button:sug}" ref="form">
                 </button>
             </form>
             <transition name="fade">
                 <div class="sug" v-if="sug">
-                    <div v-for="(t, i) in sug" v-text="t" v-if="i < 6" @click="text = t; sug = false"></div>
+                    <div v-for="(t, i) in sug" v-text="t" v-if="i < 6" @click="text = t; window.location.href='?query='+t"></div>
                 </div>
             </transition>
             <div class="results" v-if="!loading">
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn" :disabled="page === 1" @click="page -= 1; search(text)">上一页</button>
+                <button class="btn" :disabled="page <= 1" @click="page -= 1; search(text)">上一页</button>
                 <button class="btn right" @click="page += 1; search(text)">下一页</button>
             </div>
             <div class="footer" v-if="!loading"></div>

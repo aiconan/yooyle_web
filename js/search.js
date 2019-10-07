@@ -2,6 +2,7 @@ window.onload = function(){
     var app = new Vue({
         el: '#app',
         data: {
+            api: 'https://yooyle.avosapps.us/',
             loading: true,
             text: '',
             sug: null,
@@ -115,7 +116,7 @@ window.onload = function(){
                 this.n_type = 0;
                 for (i=0; i<this.type.length; i++) {
                     this.ajax({
-                        url: 'https://yooyle.avosapps.us/?keywords='+t+'&page='+this.page+'&limit='+this.limit+'&type='+this.type[i],
+                        url: this.api+'?keywords='+t+'&page='+this.page+'&limit='+this.limit+'&type='+this.type[i],
                         type: 'get',
                         dataType: 'jsonp',
                         success: function(data){
