@@ -108,6 +108,127 @@ form button:hover {
     background: rgb(33, 150, 243);
     color: #fff;
 }
+.results {
+    margin-top: 20px 0;
+}
+.card {
+    background-color: #fff;
+    margin-bottom: 10px;
+    box-shadow: 0 0px 6px rgba(32, 33, 36, 0.28);
+    border-radius: 8px;
+}
+.card > *:last-child {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.card .headline {
+    padding: 12px 16px 12px;
+}
+.card .headline a {
+    text-decoration: none;
+}
+.card .headline a div {
+    color: #1967D2;
+    font-size: 16px;
+    line-height: 20px;
+    white-space: pre-line;
+    word-wrap: break-word;
+}
+.card .headline a span {
+    color: rgba(0,102,33,1);
+    font-size: 14px;
+    line-height: 20px;
+    white-space: pre-line;
+    word-wrap: break-word;
+}
+.card .headline a:hover {
+    text-decoration: underline;
+}
+.card .divider {
+    height: 1px;
+    background-color: #dfe1e5;
+    margin: 0 16px;
+}
+.card .content {
+    padding: 12px 16px 12px;
+}
+.card .content div:first-child {
+    color: #202124;
+    font-size: 14px;
+    line-height: 20px;
+    white-space: pre-line;
+    word-wrap: break-word;
+}
+.card .content div:last-child {
+    position: relative;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: end;
+}
+.results .btn {
+    position: relative;
+    display: inline-block;
+    color: rgb(33, 150, 243)!important;
+    min-width: 88px;
+    height: 36px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 16px;
+    margin: 0;
+    overflow: hidden;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 36px;
+    color: inherit;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    zoom: 1;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background: 0 0;
+    border: none;
+    border-radius: 2px;
+    outline: 0;
+    -webkit-transition: all .2s cubic-bezier(.4,0,.2,1),-webkit-box-shadow .2s cubic-bezier(.4,0,1,1);
+    transition: all .2s cubic-bezier(.4,0,.2,1),-webkit-box-shadow .2s cubic-bezier(.4,0,1,1);
+    transition: all .2s cubic-bezier(.4,0,.2,1),box-shadow .2s cubic-bezier(.4,0,1,1);
+    transition: all .2s cubic-bezier(.4,0,.2,1),box-shadow .2s cubic-bezier(.4,0,1,1),-webkit-box-shadow .2s cubic-bezier(.4,0,1,1);
+    will-change: box-shadow;
+    -webkit-user-drag: none;
+}
+.results .btn.right {
+    position: absolute;
+    right: 0;
+}
+.results .btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.results .btn:active {
+    background-color: rgba(0, 0, 0, 0.165);
+}
+.results .btn[disabled] {
+    color: inherit!important;
+}
+.results .btn[disabled]:hover {
+    background-color: transparent!important;
+}
+.results .btn[disabled]:active {
+    background-color: transparent!important;
+}
+.footer {
+    margin-top: 40px;
+    text-align: center;
+    height: 20px;
+}
 .fade-enter-active, .fade-leave-active {
     transition: opacity .3s;
 }

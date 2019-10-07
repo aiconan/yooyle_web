@@ -10,7 +10,7 @@
     <link href="./css/search.css" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    <div id="app" @click="sug = false">
         <div class="container center">
             <div class="logo center"></div>
             <form action="#" method="get" class="valign">
@@ -23,7 +23,26 @@
                     <div v-for="(t, i) in sug" v-text="t" v-if="i < 6" @click="text = t; sug = false"></div>
                 </div>
             </transition>
-            <div class="results"></div>
+            <div class="results" v-if="!loading">
+                <div v-for="(item, type) in results">
+                    <div class="card" v-for="item in item" v-if="item.title && item.description && item.link">
+                        <div class="headline">
+                            <a target="_blank" :href="item.link" :title="item.title">
+                                <div v-text="item.title"></div>
+                                <span v-text="item.link"></span>
+                            </a>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="content">
+                            <div v-text="item.description"></div>
+                            <div v-text="type"></div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn" :disabled="page === 1" @click="page -= 1; search(text)">上一页</button>
+                <button class="btn right" @click="page += 1; search(text)">下一页</button>
+            </div>
+            <div class="footer" v-if="!loading"></div>
             <div class="loading_page" v-if="loading">
                 <div class="loading_box">
                     <div class="loader">

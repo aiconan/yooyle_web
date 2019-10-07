@@ -5,6 +5,15 @@ window.onload = function(){
             loading: true,
             text: '',
             sug: null,
+            page: 1,
+            limit: 5,
+            type: ["baidu","google","bing"],
+            n_type: null,
+            results: {
+                baidu: [],
+                google: [],
+                bing: []
+            }
         },
         mounted: function(){
             var scroll = {
@@ -14,6 +23,9 @@ window.onload = function(){
                 click: this.iScrollClick()
             };
             main_scroll = new IScroll("#app", scroll);
+            this.text = this.getQueryString("query");
+            this.page = this.getQueryString("page") || 1;
+            this.search(this.getQueryString("query"));
         },
         updated: function(){
             main_scroll.refresh();
@@ -99,6 +111,36 @@ window.onload = function(){
             },
             search: function(t){
                 if(!t) return false;
+                this.loading = true;
+                this.n_type = 0;
+                for (i=0; i<this.type.length; i++) {
+                    this.ajax({
+                        url: 'https://yooyle.avosapps.us/?keywords='+t+'&page='+this.page+'&limit='+this.limit+'&type='+this.type[i],
+                        type: 'get',
+                        dataType: 'jsonp',
+                        success: function(data){
+                            app.n_type += 1;
+                            if(app.n_type == 1) {
+                                app.results.baidu = data;
+                            } else if(app.n_type === 2) {
+                                app.results.google = data;
+                            } else if(app.n_type === 3) {
+                                app.results.bing = data;
+                                app.loading = false;
+                                document.title = app.text+' - Yooyle';
+                                if (navigator.userAgent.toLowerCase().match(/MicroMessenger/i) !== "micromessenger") {
+                                    history.pushState(null, null, '?query='+app.text+'&page='+app.page);
+                                }
+                            }
+                        }
+                    })
+                }
+            },
+            getQueryString: function(name){ 
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) return decodeURI(r[2]);
+                return null;
             }
         }
     })
